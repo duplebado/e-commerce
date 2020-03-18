@@ -7,14 +7,16 @@
       <div id="left-content">
         <ECommerceCategory />
       </div>
-
+      
+      <div id="slider" style="margin-right: 15px">
+        <ECommerceSlider/>
+      </div>
+      
       <div id="right-content">
         <ECommerceBody
           v-for="product in productDisplay"
           v-bind:key="product.id"
-          v-bind:carprop = "product"
-
-        
+          v-bind:carprop = "product"        
         />
       </div>
 
@@ -26,6 +28,7 @@
 import ECommerceHeader from './components/ECommerceHeader.vue'
 import ECommerceCategory from './components/ECommerceCategory.vue'
 import ECommerceBody from './components/ECommerceBody.vue'
+import ECommerceSlider from './components/ECommerceSlider.vue'
 
 
 
@@ -34,7 +37,8 @@ export default {
   components: {
     ECommerceHeader,
     ECommerceCategory,
-    ECommerceBody
+    ECommerceBody,
+    ECommerceSlider
   },
   data: function(){
     return{
@@ -96,13 +100,21 @@ export default {
         width: 100% vw;
         min-height: 600px;
     }
+    #slider{
+      background-color: dimgray;
+      float: right;
+      width: 79%;
+      min-height: 20px;
+      border-radius: 5px;
+      margin: 4px 2px 2px 2px;
+    }
     #left-content, #right-content{
         border-radius: 5px;
         margin: 4px 2px 2px 2px;
     }
     #left-content{
         margin-top: 15px;
-        border: 1px solid rebeccapurple;
+        border: 1px solid dimgrey;
         float: left;
         width: 18%;
         min-height: 340px;

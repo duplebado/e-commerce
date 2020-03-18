@@ -36,11 +36,11 @@ export default {
     text-align: center;
 }
 .carName{
-  color:rebeccapurple
+  color:dimgrey
 }
 #custom{
     /* border:1px solid grey; */
-    box-shadow: 1px 1px 10px rebeccapurple;
+    box-shadow: 1px 1px 10px dimgrey;
     float: left;
     margin: 10px;
     height: 400px;
