@@ -21,6 +21,10 @@
       </div>
 
     </div>
+
+    <div id="footer">
+      <ECommerceFooter/>
+    </div>
   </div>
 </template>
 
@@ -29,6 +33,8 @@ import ECommerceHeader from './components/ECommerceHeader.vue'
 import ECommerceCategory from './components/ECommerceCategory.vue'
 import ECommerceBody from './components/ECommerceBody.vue'
 import ECommerceSlider from './components/ECommerceSlider.vue'
+import ECommerceFooter from './components/ECommerceFooter.vue'
+
 
 
 
@@ -38,7 +44,8 @@ export default {
     ECommerceHeader,
     ECommerceCategory,
     ECommerceBody,
-    ECommerceSlider
+    ECommerceSlider,
+    ECommerceFooter
   },
   data: function(){
     return{
@@ -101,6 +108,7 @@ export default {
         min-height: 600px;
     }
     #slider{
+
       background-color: dimgray;
       float: right;
       width: 79%;
@@ -124,5 +132,11 @@ export default {
         width: 81%;
         min-height: 596px;
     } 
+    #footer{
+      float: left;
+      background-color: dimgray;
+      width: 98.79vw;
+      min-height: 100px;
+    }
 </style>
 

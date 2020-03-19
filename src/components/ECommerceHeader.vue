@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 #custom-style{
-  background-color: palevioletred;
+  background-color: rebeccapurple;
 }
 .header-text{
   font-size: 30px;

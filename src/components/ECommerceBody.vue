@@ -30,7 +30,7 @@ export default {
     height: 250px;
 }
 .product-text{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial, sans-serif';
     font-weight: bold;
     color: dimgray;
     text-align: center;
@@ -48,7 +48,7 @@ export default {
 }
 
 #custom-style{
-  background-color: palevioletred;
+  background-color: rebeccapurple;
 }
 
 </style>
