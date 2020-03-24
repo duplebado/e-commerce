@@ -1,22 +1,34 @@
 <template>
-    <carousel-3d>
-        <slide
-         v-for="slider in sliderDisplay"
+  <div>
+    <b-carousel
+      class="shadow-lee"
+      id="carousel-1"
+      :interval="4000"
+      controls
+      indicators
+      style="text-shadow: 1px 1px 2px #333;"
+
+    >
+
+      <!-- Slides with image only -->
+      <b-carousel-slide 
+          v-for="slider in sliderDisplay"
          v-bind:key="slider.id"
          v-bind:index="slider.id"
-        >
-          <img v-bind:src="slider.imageLink" class="sizer" />
-        </slide>
-    </carousel-3d>
+      v-bind:img-src="slider.imageLink" class="sizer"
+      text="Gbogbonise Month. 20% OFF!!!"
+      ></b-carousel-slide>
+      
+    </b-carousel>
+
+   
+  </div>
 </template>
 
 <script>
-import { Carousel3d, Slide } from 'vue-carousel-3d';
-
-export default {
-    name:'ECommerceSlider',
-    components: {Carousel3d,Slide},
-    data(){
+  export default {
+    name:'EcommerceSlider',
+        data(){
         return{
           sliderDisplay: [
             {id: 0,
@@ -43,12 +55,17 @@ export default {
           ]
         }
     }  
-}
+  }
 </script>
 
 <style scoped>
-.sizer{
-    width: 360px;
-    height: 270px;
+.shadow-lee{
+    box-shadow: 1px 1px 10px dimgrey;
+    color: rebeccapurple;
 }
+.sizer{
+    width: 1066px;
+    height: 330px;
+}
+
 </style>

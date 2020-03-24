@@ -9,17 +9,30 @@
           </p>
         </b-card-text>
 
-        <b-button href="#" id="custom-style" >BUY</b-button>
+      <router-link @click="carPropIdReturn" to="/details/benzo">
+        <b-button id="custom-style" >
+          DETAILS
+        </b-button>
+      </router-link>
+
       </b-card>
     </div>
 </template>
 
 <script>
+
+
 export default {
     name: 'EcommerceBody',
     props: [
         "carprop"
-    ]
+    ],
+    methods:{
+      carPropIdReturn(){
+        console.log(this.carprop.name)
+        return this.carprop.id
+      }
+    }
 }
 </script>
 

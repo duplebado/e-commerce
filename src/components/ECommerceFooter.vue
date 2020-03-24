@@ -1,5 +1,6 @@
 <template>
-    <div>
+<div>
+
         <div id="top">
             <div id="column-one">
                 <div id="column-one-container">
