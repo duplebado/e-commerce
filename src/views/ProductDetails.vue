@@ -3,54 +3,57 @@
         <router-link to="/"><div id="cancel">  X </div></router-link>
         
       
-       <div id="carousel-container">
-        <b-carousel
-          id="carousel-1"
-          :interval="4000"
-          controls
-          indicators
-          style="text-shadow: 1px 1px 2px #333;"
-        >
-          <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58" class="sizer"></b-carousel-slide>
-        </b-carousel>
-      </div>
-      <div id="right-of-carousel">
-          <div id="car-name">g- wagon</div>
-          <div id="car-price"> ₦20,000{{ $route.params.carProductDetails }}</div>
-      </div>
-      <div id="bottom-sub-container">
-          <div id="one">BEAR WITH US</div>
-          <div id="two">THIS WEBSITE IS STILL IN PROGRESS</div>
-          <div id="three">I AM HAVING DIFFULTY LINKING EACH PRODUCT TO ITS PRODUCT DYNAMICALLY</div>
+        <div id="carousel-container">
+         <b-carousel
+           id="carousel-1"
+           :interval="4000"
+           controls
+           indicators
+           style="text-shadow: 1px 1px 2px #333;"
+         >
+           <b-carousel-slide v-bind:img-src="productDetails.view1" class="sizer"></b-carousel-slide>
+           <b-carousel-slide v-bind:img-src="productDetails.view2" class="sizer"></b-carousel-slide>
+           <b-carousel-slide v-bind:img-src="productDetails.view3" class="sizer"></b-carousel-slide>
+           <b-carousel-slide v-bind:img-src="productDetails.view4" class="sizer"></b-carousel-slide>
+           <b-carousel-slide v-bind:img-src="productDetails.view5" class="sizer"></b-carousel-slide>
 
-      </div>
+         </b-carousel>
+        </div>
+        <div id="right-of-carousel">
+           <div id="car-name">{{productDetails.name}} </div>
+           <div id="car-price">₦{{productDetails.price}} </div>
+           <div id="general-info">
+               <h6>GENERAL INFORMATION</h6>
+               <hr>
+               <h6>Make (Mode)<span style="padding-right:150px"></span>{{productDetails.make}}</h6> 
+               <hr>
+               <h6>Year<span style="padding-right:217px"></span>{{productDetails.year}}</h6>
+               <hr>
+               <h6>Fuel<span style="padding-right:215px"></span>{{productDetails.fuel}}</h6>
+               <hr>
+               <h6>Engine<span style="padding-right:195px"></span>{{productDetails.engine}}</h6>
+               <hr>
+               <h6>Transmission<span style="padding-right:150px"></span>{{productDetails.transmission}}</h6>
+               <hr>
+           </div>
+        </div>
+        <div id="bottom-sub-container">
+           <div id="one">COMING SOON</div>
+           <div id="two">COMING SOON</div>
+           <div id="three">COMING SOON</div>
+
+        </div>
     </div> 
     
 </template>
 
 <script>
   export default {
-    
-    // props: [
-    //     "carProductDetail"
-    // ]
-    // data(){
-    //   return{
-    //     productDescription:[
-    //       {id:1,
-    //       name: "fucking brabus",
-    //       price: "34,000,000"
-    //       },
-    //       {id:2,
-    //       name: "toyota hilux",
-    //       price: "18,000,000"
-    //       }
-    //     ]
-    //   }
-    // },
-    // methods:{
-     
-    // }
+    computed:{
+        productDetails(){
+            return this.$store.state.productDetailsDisplay
+        }
+    }
   }
 </script>
 
@@ -61,7 +64,7 @@
 }
 .sizer{
     width: 100%;
-    height: 100%;
+    height: 342px;
 }
 #cancel{
     position: absolute;
@@ -93,14 +96,16 @@
 }
 #right-of-carousel{
     float: left         ;
-    background-color: yellow;
+    /* background-color: yellow; */
+    color: rgb(108,117,125);
+
     margin-left: 7px;
     margin-top: 7px;
     width: 600px;
     height: 342px;
 }
 #car-name{
-    background-color: royalblue;
+    /* background-color: royalblue; */
     float: left;
     width: 320px;
     height: 35px;
@@ -110,7 +115,8 @@
 
 }
 #car-price{
-    background-color: royalblue;
+    /* background-color: royalblue; */
+    color: rgb(108,117,125);
     float: left;
     width: 200px;
     height: 35px;
@@ -118,6 +124,13 @@
     margin-left: 7px;
     font-weight: bold;
     font-size: 20px;
+}
+#general-info{
+    /* background-color: cornflowerblue; */
+    border-top: 2px solid rebeccapurple;
+    float: left;
+    width: 545px;
+    height: 302px;
 }
 
 #bottom-sub-container{
@@ -129,7 +142,7 @@
 }
 #one, #two{
     float: left;
-    background-color: royalblue;
+    background-color: rebeccapurple;
     width: 570px;
     height: 223px;
     margin-left: 7px;
@@ -137,7 +150,7 @@
 }
 #three{
     float: left;
-    background-color: royalblue;
+    background-color:rebeccapurple;
     width: 182px;
     height: 223px;
     margin-left: 7px;

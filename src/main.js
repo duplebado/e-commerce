@@ -1,23 +1,20 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import {routes} from './routes'
+import router from './router'
+import store from './store'
 
 
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter )
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
-const router = new VueRouter({
-  routes,
-  mode: 'history'
-})
+
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

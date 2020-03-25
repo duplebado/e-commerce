@@ -1,20 +1,21 @@
 <template>
     <div>
-      <b-card id="custom">
-        <img v-bind:src="carprop.imageLink"  class="img-size"/>
+      <b-card id="custom"
+      v-for="info in productDisplayOnHomePage" :key="info.id"
+      >
+        <img v-bind:src="info.imageLink"  class="img-size"/>
         <b-card-text class="product-text">
-          <p class="carName">{{carprop.name}}</p>
-          <p> ₦{{carprop.price}}
+          <p class="carName">{{info.name}}</p>
+          <p> ₦{{info.price}}
               
           </p>
         </b-card-text>
 
-      <router-link @click="carPropIdReturn" to="/details/benzo">
-        <b-button id="custom-style" >
-          DETAILS
-        </b-button>
-      </router-link>
-
+        <a href="#" @click="redirectToCorrespondingProductDetailsPage(info)">
+          <b-button id="custom-style" >
+            DETAILS
+          </b-button>
+        </a>
       </b-card>
     </div>
 </template>
@@ -23,16 +24,20 @@
 
 
 export default {
-    name: 'EcommerceBody',
-    props: [
-        "carprop"
-    ],
-    methods:{
-      carPropIdReturn(){
-        console.log(this.carprop.name)
-        return this.carprop.id
-      }
+  name: 'EcommerceBody',
+  computed:{
+  productDisplayOnHomePage(){
+    return this.$store.state.productDisplay;
     }
+  },
+  methods:{
+    redirectToCorrespondingProductDetailsPage(info){
+      this.$store.commit('putSomethingInproductDetailsDisplay', info)
+
+      this.$router.push({path: '/car-details'})
+    }
+  }
+
 }
 </script>
 

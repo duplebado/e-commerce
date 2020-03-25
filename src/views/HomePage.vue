@@ -1,10 +1,10 @@
 <template>
-    <div id="app">
+  <div id="app">
 
     <div id="container" >
     
       <div id="left-content">
-        <ECommerceCategory />
+        <ECommerceCategory/>
       </div>
       
       <div id="slider" style="margin-right: 15px">
@@ -12,17 +12,10 @@
       </div>
       
       <div id="right-content">
-        <ECommerceBody
-          v-for="product in productDisplay"
-          v-bind:key="product.id"
-          v-bind:carprop = "product"        
-        />
+        <ECommerceBody/>
       </div>
 
     </div>
-
-    
-
 
   </div>
 </template>
@@ -41,58 +34,6 @@ export default {
     ECommerceCategory,
     ECommerceBody,
     ECommerceSlider
-  },
-  data: function(){
-    return{
-      productDisplay: [
-        {id : 1,
-         imageLink: require("../assets/images/Brabus.jpg"),
-         name: "Brabus G700 (2015)",
-         price: "35,560,000"
-        },
-
-        {id : 2,
-         imageLink: require("../assets/images/Toyota-Hilux.jpg"),
-         name: "Toyota Hilux (2019)",
-         price: "22,000,000"
-        },
-        {id : 3,
-         imageLink: require("../assets/images/gle.jpg"),
-         name: "GLE 63 AMG (2018)",
-         price: "25,000,000"
-        },
-        {id : 4,
-         imageLink: require("../assets/images/challenger.jpg"),
-         name: "Challenger R/T (2018)",
-         price: "19,000,000"
-        },
-        {id : 5,
-         imageLink: require("../assets/images/range.jpg"),
-         name: "Range Rover Sport (2019)",
-         price: "42,000,000"
-        },
-        {id : 6,
-         imageLink: require("../assets/images/gl (1).jpg"),
-         name: "GLE 43 AMG (2016)",
-         price: "31,000,000"
-        },
-        {id : 7,
-         imageLink: require("../assets/images/gl (3).jpg"),
-         name: "Mercedes Benz E350 (2014)",
-         price: "14,000,000"
-        },
-        {id : 8,
-         imageLink: require("../assets/images/gl (4).jpg"),
-         name: "Toyota Avalon (2015)",
-         price: "13,000,000"
-        },
-        {id : 9,
-         imageLink: require("../assets/images/gl (2).jpg"),
-         name: "Lexus LX 570 (2017)",
-         price: "37,000,000"
-        }
-      ]
-    }
   }
 }
 </script>
