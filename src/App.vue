@@ -17,6 +17,7 @@ import ECommerceFooter from './components/ECommerceFooter.vue'
 
 
 
+
 export default {
   name: 'App',
   components: {
@@ -28,35 +29,6 @@ export default {
 
 
 <style scoped>
-    #container{
-        width: 100% vw;
-        min-height: 600px;
-    }
-    #slider{
-
-      background-color: dimgray;
-      float: right;
-      width: 79%;
-      min-height: 20px;
-      border-radius: 5px;
-      margin: 4px 2px 2px 2px;
-    }
-    #left-content, #right-content{
-        border-radius: 5px;
-        margin: 4px 2px 2px 2px;
-    }
-    #left-content{
-        margin-top: 15px;
-        border: 1px solid dimgrey;
-        float: left;
-        width: 18%;
-        min-height: 340px;
-    } 
-    #right-content{
-        float: right;
-        width: 81%;
-        min-height: 596px;
-    } 
     #footer{
       float: left;
       background-color: dimgray;

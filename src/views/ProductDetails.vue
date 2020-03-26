@@ -21,7 +21,7 @@
         </div>
         <div id="right-of-carousel">
            <div id="car-name">{{productDetails.name}} </div>
-           <div id="car-price">₦{{productDetails.price}} </div>
+           <div id="car-price"> Price: ₦{{productDetails.price}} </div>
            <div id="general-info">
                <h6>GENERAL INFORMATION</h6>
                <hr>
@@ -38,9 +38,48 @@
            </div>
         </div>
         <div id="bottom-sub-container">
-           <div id="one">COMING SOON</div>
-           <div id="two">COMING SOON</div>
-           <div id="three">COMING SOON</div>
+           <div id="one">
+            <other-details/>
+            <router-view></router-view>
+
+           </div>
+           <div id="two">
+                <div id="policy-header">
+                    <h6 style="margin-top:5px">Delivery & Return Policy</h6> <hr>
+                </div>
+                <div id="policy-info">
+                    <div id="pdiv"><span> <img src="../assets/images/policyIcons/download.png" id="policy-icons" /> </span></div>
+
+                    <div id="policy-actual-info">
+                        <p class="fnt-size">Delivery Infomation</p>
+                        <p class="fnt-size2">Express delivery in Abuja and Lagos.<br>
+                        Normally delivered between 2-3 days for orders in other cities. Please check exact dates in the Checkout page <a class="sakamanje">See more</a></p>
+                    </div>
+                </div>
+               
+
+                <div id="policy-info">
+                   <div id="pdiv"><span> <img src="../assets/images/policyIcons/return.png" id="policy-icons" /> </span></div>
+
+                    <div id="policy-actual-info">
+                        <p class="fnt-size">Return Policy</p>
+                        <p class="fnt-size2">Free return within 30 days for Super and Luxury cars and 7 days for other cars</p>
+                    </div> 
+                </div>
+
+                <div id="policy-info">
+                    <div id="pdiv"><span> <img src="../assets/images/policyIcons/warranty.png" id="policy-icons" /> </span></div>
+
+                    <div id="policy-actual-info">
+                        <p class="fnt-size">Warranty</p>
+                        <p class="fnt-size2">Yes</p>
+                    </div>   
+                </div>
+           </div>
+           <div id="three">
+               <div id="compare-btn">COMPARE</div>
+               <div id="buy-btn">BUY NOW</div>
+           </div>
 
         </div>
     </div> 
@@ -48,7 +87,10 @@
 </template>
 
 <script>
+import OtherDetails from '../components/OtherDetails.vue'
+
   export default {
+    components: {OtherDetails},
     computed:{
         productDetails(){
             return this.$store.state.productDetailsDisplay
@@ -63,8 +105,8 @@
     color: rebeccapurple;
 }
 .sizer{
-    width: 100%;
-    height: 342px;
+    width: 710px;
+    height: 339px;
 }
 #cancel{
     position: absolute;
@@ -72,7 +114,7 @@
     font-weight: bold;
     top:78px;
     right: 5px;
-    background-color: rgb(108,117,125);
+    background-color:tomato;
     color:rebeccapurple;
     border-radius: 30px;
     width: 50px;
@@ -88,10 +130,13 @@
 
 #carousel-container{
     /* background-color: red; */
+    border: 2px solid rebeccapurple;
+    box-shadow: 1px 1px 15px dimgray;
     float: left;
     margin-left: 7px;
     margin-top: 7px;
-    width:730px;
+    margin-right: 20px;
+    width:710px;
     height: 342px;
 }
 #right-of-carousel{
@@ -140,20 +185,119 @@
     height:237px;
 
 }
-#one, #two{
+#one{
     float: left;
-    background-color: rebeccapurple;
-    width: 570px;
+    /* background-color: rebeccapurple; */
+    border: 2px solid rebeccapurple;
+    box-shadow: 1px 1px 15px dimgray;
+    color: dimgray;
+    width: 710px;
     height: 223px;
     margin-left: 7px;
     margin-top: 7px;
 }
+
+#two{
+    float: left;
+    /* background-color: rebeccapurple; */
+    border: 2px solid rebeccapurple;
+    box-shadow: 1px 1px 15px dimgray;
+    color: dimgray;
+    width: 430px;
+    height: 223px;
+    margin-left: 7px;
+    margin-top: 7px;
+}
+#policy-header{
+    margin-left: 6px;
+    margin-right: 6px;
+    height: 35px;
+}
+#policy-info{
+    /* background-color: tomato; */
+    margin-bottom: 7px;
+    margin-left: 4px;
+    float:left;
+    height: 62px;
+    width: 98%;
+}
+#policy-icons{
+    color: rebeccapurple; 
+    font-weight:bold;
+    width:45px;
+    height:38px;
+}
+#pdiv{
+    float: left;
+    margin-top: 2px;
+    margin-right: 4px;
+    width:45px;
+    height:38px;
+}
+#policy-actual-info{
+    float: left;  
+    /* background-color: red; */
+    height: 100%;
+    width: 365px;
+}
+
 #three{
     float: left;
-    background-color:rebeccapurple;
+    border: 2px solid rebeccapurple;
+    box-shadow: 1px 1px 15px dimgray;
+    /* background-color:rebeccapurple; */
     width: 182px;
     height: 223px;
     margin-left: 7px;
     margin-top: 7px;
 }
+#compare-btn{
+    float:left;
+    background-color:whitesmoke;
+    border: 2px solid dimgray;
+    border-radius: 30px;
+    box-shadow: 1px 1px 15px dimgray;
+    color: rebeccapurple;
+    font-size: 22px;
+    font-weight:bold;
+    margin-bottom:8.5px;
+    margin-top:28.5px;
+    margin-left:8.5px;
+    padding-top:10px;
+    height:60px;
+    text-align: center;
+    width:160px;
+    background-color: tomato;
+}
+ #buy-btn{
+    float:left;
+    background-color:whitesmoke;
+    border: 2px solid dimgray;
+    border-radius: 30px;
+    box-shadow: 1px 1px 15px dimgray;
+    color: rebeccapurple;
+    font-size: 22px;
+    font-weight:bold;
+    margin-bottom:38.5px;
+    margin-top:28.5px;
+    margin-left:8.5px;
+    padding-top:10px;
+    height:60px;
+    text-align: center;
+    width:160px;
+    background-color: tomato ;
+}
+.fnt-size{
+    font-size: 11px;
+    font-weight: bold;
+}
+.fnt-size2{
+    margin-top: -16px;
+    font-size: 11px;
+}
+.sakamanje{
+    text-decoration: underline;
+    color: blue;
+}
+
 </style>

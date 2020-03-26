@@ -3,9 +3,10 @@ import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import router from './router'
 import store from './store'
+// import OtherDetails from './components/OtherDetails.vue'
 
 
-
+// Vue.component('other-details', OtherDetails);
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
