@@ -42,7 +42,12 @@ const store = new Vuex.Store({
              year: "2019",
              fuel: "diesel",
              transmission: "automatic",
-             engine: "Ingenium 3.0L 6cylinder"
+             engine: "Ingenium 3.0L 6cylinder",
+             designExterior: "something power",
+             interior: "something interior",
+             powerSound: "something sound",
+             wheelsChasis: "something wheel",
+             performanceFuelEconomy: "something performance"
             },
     
             {id : 2,
@@ -167,11 +172,30 @@ const store = new Vuex.Store({
              engine: "6.2L V8"
             }
         ],
-        productDetailsDisplay: null
+        productDetailsDisplay: null,
+        show: true,
+        noShow: false,
+        currentHeader: null,
+        temp: null
     },
     mutations:{
         putSomethingInproductDetailsDisplay(state, data){
-            this.state.productDetailsDisplay = data;
+            state.productDetailsDisplay = data;
+        },
+        
+        changeShow(state){
+            let saka = state.show;
+            state.show = !saka ;
+        },
+        changeNoShow(state){
+            let manje = state.noShow
+            state.noShow = !manje;
+        },
+        updateCurrentHeader(state, data){
+            state.currentHeader = data;
+        },
+        updateTemp(state, data){
+            state.temp = data;
         }
     }
 })

@@ -23,7 +23,7 @@ export const routes = [
         component: OtherDetails
     },
     {
-        path: '/design-and-interior',
+        path: '/de',
         componenent: DesignInterior
     }
 ]

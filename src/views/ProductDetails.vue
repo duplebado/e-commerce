@@ -1,6 +1,6 @@
 <template>
     <div id="contain">
-        <router-link to="/"><div id="cancel">  X </div></router-link>
+        <router-link to='/'><div id="cancel">  X </div></router-link>
         
       
         <div id="carousel-container">
@@ -39,8 +39,8 @@
         </div>
         <div id="bottom-sub-container">
            <div id="one">
-            <other-details/>
-            <router-view></router-view>
+            <design-interior v-if="noShow"/>
+            <other-details v-if="show"/>
 
            </div>
            <div id="two">
@@ -82,18 +82,30 @@
            </div>
 
         </div>
+
     </div> 
     
 </template>
 
 <script>
 import OtherDetails from '../components/OtherDetails.vue'
+import DesignInterior from '../components/DesignInterior.vue'
+
 
   export default {
-    components: {OtherDetails},
+    components: {
+        OtherDetails,
+        DesignInterior
+    },
     computed:{
         productDetails(){
             return this.$store.state.productDetailsDisplay
+        },
+        show(){
+            return this.$store.state.show;
+        },
+        noShow(){
+            return this.$store.state.noShow;
         }
     }
   }

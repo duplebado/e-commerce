@@ -1,63 +1,91 @@
 <template>
-    <div>
-        <div id="features-1">
-            <div class="writing-on-the-wall">FUCK YOU</div>
-            <div class="drop-down-span">+</div>
-        </div>
-       
-        <div id="features-1"> 
-            <div class="writing-on-the-wall">Interior</div> 
-            <div class="drop-down-span">+</div> 
-        </div>
-               
-        <div id="features-1">
-            <div class="writing-on-the-wall">Power & Sound</div> 
-            <div class="drop-down-span">+</div>
-        </div>
+    <div id="main-container">
+       <div id="header" @click="changeShowStatus">
+            <div id="actual-header">
+               <h5>{{currentHeader}}</h5>
+            </div> 
 
-        <div id="features-1">
-            <div class="writing-on-the-wall">Wheels & Chasis</div> 
-            <div class="drop-down-span">+</div> 
-        </div>
+            <div id="drop-down" ><span id="drop-down-icon">_</span></div>
 
-        <div id="features-2">
-            <div class="writing-on-the-wall">Performance & Fuel Economy</div>
-            <div class="drop-down-span">+</div> 
         </div>
-
+       <div id="list-div">
+           <ul >
+               <li
+               v-for="something in japa" :key="something.id"
+               >{{something.price}}</li>
+           </ul>
+       </div>
     </div>  
 </template>
 
 <script>
 export default {
-    name: 'DesignInterior'
+    name: 'DesignInterior',
+    computed:{
+        japa(){
+            return this.$store.state.temp;
+        },
+        currentHeader(){
+            return this.$store.state.currentHeader;
+        }
+    },
+    methods:{
+        changeShowStatus(){
+            this.$store.commit('changeShow');
+
+            this.$store.commit('changeNoShow');
+        }
+    }
 }
 </script>
 
 <style>
-#features-1{
-    border-bottom: 0.1px solid dimgray;
-    margin-left: 15px;
-    width:675px;
-    height: 44.6px;
+#main-container{
+    /* background-color: red; */
+    height: 219px;
+    width:706px;
 }
-#features-2{
-    margin-left: 15px;
-    width: 675px;
-    height: 44.6px;
+#header{
+    /* background-color: yellow; */
+    border-bottom: 1px solid dimgray;
+    margin-left: 20px;
+    margin-right: 20px;
+    height:40px;
+    width:666px;
+    padding-top: 3px;
+    text-align: left;
 }
-.writing-on-the-wall{
+#actual-header{
     float:left;
-    margin-top: 3px;
-    width:95%;
-    height: 100%;
+    /* background-color: red; */
+    width: 600px;
+    height: 40px;
 }
-.drop-down-span{
-    float:left;
-    font-size: 50px;
-    margin-top: -29px;
-    width:5%;
-    height: 90%;
-}
+#list-div{
+    background-color: whitesmoke;
+    margin-left: 60px;
+    margin-right: 60px;
+    height:179px;
+    width:586px;
+    text-align: left;
 
+}
+#drop-down{
+    float:left;
+    /* background-color: violet; */
+    /* margin-left: 20px; */
+    /* padding-bottom: 700px; */
+    font-size: 50px;
+    font-weight: bold;
+    width:66px;
+    height: 40px;
+}
+#drop-down-icon{
+    float: left;
+    width: 60px;
+    height: 40px;
+    /* background-color:tomato; */
+    margin-top: -46px;
+    margin-left: 40px;
+}
 </style>

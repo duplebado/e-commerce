@@ -1,26 +1,27 @@
 <template>
     <div>
-        <div id="features-1">
+     
+        <div id="features-1" @click="showStatus('Design & Exterior', theCurrentProductDisplay)">
             <div class="writing-on-the-wall">Design & Exterior</div>
-            <div class="drop-down-span"><router-link to='/'>+</router-link></div>
+            <div class="drop-down-span" >+</div>
         </div>
-       
-        <div id="features-1"> 
+     
+        <div id="features-1" @click="showStatus('Interior')"> 
             <div class="writing-on-the-wall">Interior</div> 
             <div class="drop-down-span">+</div> 
         </div>
                
-        <div id="features-1">
+        <div id="features-1" @click="showStatus('Power & Sound')">
             <div class="writing-on-the-wall">Power & Sound</div> 
             <div class="drop-down-span">+</div>
         </div>
 
-        <div id="features-1">
+        <div id="features-1" @click="showStatus('Wheels & Chasis')">
             <div class="writing-on-the-wall">Wheels & Chasis</div> 
             <div class="drop-down-span">+</div> 
         </div>
 
-        <div id="features-2">
+        <div id="features-2" @click="showStatus('Performance & Fuel Economy')">
             <div class="writing-on-the-wall">Performance & Fuel Economy</div>
             <div class="drop-down-span">+</div> 
         </div>
@@ -30,7 +31,25 @@
 
 <script>
 export default {
-    name: 'OtherDetails'
+    name: 'OtherDetails',
+    computed:{
+        theCurrentProductDisplay(){
+            return this.$store.state.productDetailsDisplay
+        }
+    },
+        
+    
+    methods:{
+        showStatus(data, matini){
+            this.$store.commit('changeShow');
+            this.$store.commit('updateCurrentHeader', data)
+            this.$store.commit('updateTemp', matini)
+            this.$store.commit('changeNoShow');
+        }
+        // theCurrentProductDisplay(){
+        //      return this.$store.state.productDetailsDisplay
+        // }
+    }
 }
 </script>
 
