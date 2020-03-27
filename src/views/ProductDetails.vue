@@ -39,7 +39,7 @@
         </div>
         <div id="bottom-sub-container">
            <div id="one">
-            <design-interior v-if="noShow"/>
+            <peculiar-information v-if="noShow"/>
             <other-details v-if="show"/>
 
            </div>
@@ -89,13 +89,14 @@
 
 <script>
 import OtherDetails from '../components/OtherDetails.vue'
-import DesignInterior from '../components/DesignInterior.vue'
+import PeculiarInformation from '../components/PeculiarInformation'
+
 
 
   export default {
     components: {
         OtherDetails,
-        DesignInterior
+        PeculiarInformation
     },
     computed:{
         productDetails(){

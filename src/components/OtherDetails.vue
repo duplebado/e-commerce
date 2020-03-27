@@ -1,28 +1,28 @@
 <template>
     <div>
      
-        <div id="features-1" @click="showStatus('Design & Exterior', theCurrentProductDisplay)">
+        <div id="features-1" @click="showStatus('Design & Exterior', theCurrentProductDisplay.designExterior)">
             <div class="writing-on-the-wall">Design & Exterior</div>
             <div class="drop-down-span" >+</div>
         </div>
      
-        <div id="features-1" @click="showStatus('Interior')"> 
+        <div id="features-1" @click="showStatus('Interior', theCurrentProductDisplay.interior)"> 
             <div class="writing-on-the-wall">Interior</div> 
             <div class="drop-down-span">+</div> 
         </div>
                
-        <div id="features-1" @click="showStatus('Power & Sound')">
+        <div id="features-1" @click="showStatus('Power & Sound', theCurrentProductDisplay.powerSound)">
             <div class="writing-on-the-wall">Power & Sound</div> 
             <div class="drop-down-span">+</div>
         </div>
 
-        <div id="features-1" @click="showStatus('Wheels & Chasis')">
+        <div id="features-1" @click="showStatus('Wheels & Chasis', theCurrentProductDisplay.wheelsChasis)">
             <div class="writing-on-the-wall">Wheels & Chasis</div> 
             <div class="drop-down-span">+</div> 
         </div>
 
-        <div id="features-2" @click="showStatus('Performance & Fuel Economy')">
-            <div class="writing-on-the-wall">Performance & Fuel Economy</div>
+        <div id="features-2" @click="showStatus('Performance & Fuel Economy', theCurrentProductDisplay.performanceFuelEconomy)">
+            <div class="writing-on-the-wall1">Performance & Fuel Economy</div>
             <div class="drop-down-span">+</div> 
         </div>
 
@@ -40,15 +40,13 @@ export default {
         
     
     methods:{
-        showStatus(data, matini){
+        showStatus(data, info){
+            // console.log(this.theCurrentProductDisplay);
             this.$store.commit('changeShow');
             this.$store.commit('updateCurrentHeader', data)
-            this.$store.commit('updateTemp', matini)
             this.$store.commit('changeNoShow');
+            this.$store.commit('updateToBeUsedByPeculiarInfoPage', info)
         }
-        // theCurrentProductDisplay(){
-        //      return this.$store.state.productDetailsDisplay
-        // }
     }
 }
 </script>
@@ -68,6 +66,12 @@ export default {
 .writing-on-the-wall{
     float:left;
     margin-top: 3px;
+    width:95%;
+    height: 100%;
+}
+.writing-on-the-wall1{
+    float:left;
+    margin-top: -4px;
     width:95%;
     height: 100%;
 }

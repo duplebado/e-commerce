@@ -11,8 +11,8 @@
        <div id="list-div">
            <ul >
                <li
-               v-for="something in japa" :key="something.id"
-               >{{something.price}}</li>
+               v-for="details in carFeaturesForTheCurrentPage" :key="details"
+               >{{details.info}}</li>
            </ul>
        </div>
     </div>  
@@ -20,17 +20,19 @@
 
 <script>
 export default {
-    name: 'DesignInterior',
-    computed:{
-        japa(){
-            return this.$store.state.temp;
-        },
+    name: 'peculiarInformation',
+    computed:{  
         currentHeader(){
             return this.$store.state.currentHeader;
+        },
+        carFeaturesForTheCurrentPage(){
+            return this.$store.state.toBeUsedByPeculiarInfoPage;
         }
     },
     methods:{
         changeShowStatus(){
+            console.log(this.$store.state.productDetailsDisplay)
+
             this.$store.commit('changeShow');
 
             this.$store.commit('changeNoShow');
