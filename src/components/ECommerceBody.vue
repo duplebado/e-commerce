@@ -1,23 +1,19 @@
 <template>
-    <div>
-      <b-card id="custom"
-      v-for="info in productDisplayOnHomePage" :key="info.id"
-      >
-        <img v-bind:src="info.imageLink"  class="img-size"/>
-        <b-card-text class="product-text">
-          <p class="carName">{{info.name}}</p>
-          <p> ₦{{info.price}}
-              
-          </p>
-        </b-card-text>
+  <div>
+    <b-card id="custom" v-for="info in cars" :key="info.id">
+      <img v-bind:src="`http://localhost:2500/${info.homePageImageDisplay}`" class="img-size" />
+      <b-card-text class="product-text">
+        <p class="carName">{{ info.name }}</p>
+        <p>₦{{ info.price }}</p>
+      </b-card-text>
 
-        <a href="#" @click="redirectToCorrespondingProductDetailsPage(info)">
-          <b-button id="custom-style" >
-            DETAILS
-          </b-button>
-        </a>
-      </b-card>
-    </div>
+      <a href="#" @click="redirectToCorrespondingProductDetailsPage(info)">
+        <b-button id="custom-style">
+          DETAILS
+        </b-button>
+      </a>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -26,9 +22,16 @@
 export default {
   name: 'EcommerceBody',
   computed:{
-  productDisplayOnHomePage(){
-    return this.$store.state.productDisplay;
+    productDisplayOnHomePage(){
+      return this.$store.state.productDisplay;
+    },
+    cars() {
+      console.log(this.$store.state.apiData)
+      return this.$store.state.apiData
     }
+  },
+  mounted(){
+    this.$store.dispatch('getCars')
   },
   methods:{
     redirectToCorrespondingProductDetailsPage(info){
@@ -42,32 +45,30 @@ export default {
 </script>
 
 <style scoped>
-.img-size{
-    /* margin-left: 70px; */
-    width: 300px;
-    height: 250px;
+.img-size {
+  /* margin-left: 70px; */
+  width: 300px;
+  height: 250px;
 }
-.product-text{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial, sans-serif';
-    font-weight: bold;
-    color: dimgray;
-    text-align: center;
+.product-text {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", "Arial, sans-serif";
+  font-weight: bold;
+  color: dimgray;
+  text-align: center;
 }
-.carName{
-  color:dimgrey
+.carName {
+  color: dimgrey;
 }
-#custom{
-    /* border:1px solid grey; */
-    box-shadow: 1px 1px 10px dimgrey;
-    float: left;
-    margin: 10px;
-    height: 400px;
-    width: 344px;
+#custom {
+  /* border:1px solid grey; */
+  box-shadow: 1px 1px 10px dimgrey;
+  float: left;
+  margin: 10px;
+  height: 400px;
+  width: 344px;
 }
 
-#custom-style{
+#custom-style {
   background-color: rebeccapurple;
 }
-
 </style>
-

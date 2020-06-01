@@ -17,7 +17,7 @@
         </div>
 
         <div id="features-1" @click="showStatus('Wheels & Chasis', theCurrentProductDisplay.wheelsChasis)">
-            <div class="writing-on-the-wall">Wheels & Chasis</div> 
+            <div class="writing-on-the-wall">Wheels & Chassis</div> 
             <div class="drop-down-span">+</div> 
         </div>
 

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="container">
 
         <div id="top">
             <div id="column-one">
@@ -97,6 +97,7 @@ export default {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 12px;
 }
+
 #little-headers{
     font-size: 15px;
 }

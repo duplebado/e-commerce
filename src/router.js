@@ -5,6 +5,10 @@ import VueRouter from 'vue-router'
 import HomePage from './views/HomePage.vue'
 import ProductDetails from './views/ProductDetails.vue'
 import OtherDetails from './components/OtherDetails.vue'
+import Cart from './views/Cart.vue'
+import CreateAccount from './views/CreateAccount.vue'
+import Login from './views/Login.vue'
+import Dashboard from './views/Dashboard.vue'
 
 Vue.use(VueRouter )
 
@@ -20,6 +24,22 @@ export const routes = [
     {
         path:'/car-detailsx',
         component: OtherDetails
+    },
+    {
+        path: '/cart',
+        component: Cart
+    },
+    {
+        path: '/create-account',
+        component: CreateAccount
+    },
+    {
+        path: '/login',
+        component: Login
+    },
+    {
+        path: '/dashboard',
+        component: Dashboard
     }
 ]
 
