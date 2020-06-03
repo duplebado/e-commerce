@@ -80,10 +80,13 @@
               <!-- <router-link to="/create-account"> -->
 
               <!-- </router-link> -->
-
-              <b-button block variant="primary">
-                CREATE AN ACCOUNT
-              </b-button>
+              <router-link style="text-decoration: none" to="/create-account">
+                <div style="width:340.25px">
+                  <b-button block variant="primary">
+                    CREATE AN ACCOUNT
+                  </b-button>
+                </div></router-link
+              >
             </div>
           </div>
           <div id="gmail-btn">
@@ -201,6 +204,7 @@ a {
   height: 48px;
   /* background-color: green; */
   display: inline-block;
+  text-decoration: none;
 }
 #create-div {
   float: right;

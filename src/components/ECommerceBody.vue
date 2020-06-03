@@ -1,7 +1,10 @@
 <template>
   <div>
     <b-card id="custom" v-for="info in cars" :key="info.id">
-      <img v-bind:src="`http://localhost:2500/${info.homePageImageDisplay}`" class="img-size" />
+      <img
+        v-bind:src="`http://localhost:2500/${info.homePageImageDisplay}`"
+        class="img-size"
+      />
       <b-card-text class="product-text">
         <p class="carName">{{ info.name }}</p>
         <p>₦{{ info.price }}</p>
@@ -17,31 +20,22 @@
 </template>
 
 <script>
-
-
 export default {
-  name: 'EcommerceBody',
-  computed:{
-    productDisplayOnHomePage(){
-      return this.$store.state.productDisplay;
-    },
+  name: "EcommerceBody",
+  computed: {
     cars() {
-      console.log(this.$store.state.apiData)
-      return this.$store.state.apiData
-    }
+      console.log(this.$store.state.carsFromAPI);
+      return this.$store.state.carsFromAPI;
+    },
   },
-  mounted(){
-    this.$store.dispatch('getCars')
+  methods: {
+    redirectToCorrespondingProductDetailsPage(info) {
+      this.$store.commit("putSomethingInproductDetailsDisplay", info);
+
+      this.$router.push({ path: "/car-details" });
+    },
   },
-  methods:{
-    redirectToCorrespondingProductDetailsPage(info){
-      this.$store.commit('putSomethingInproductDetailsDisplay', info)
-
-      this.$router.push({path: '/car-details'})
-    }
-  }
-
-}
+};
 </script>
 
 <style scoped>

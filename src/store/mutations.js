@@ -6,12 +6,12 @@ export default {
   },
 
   changeShow(state) {
-    let saka = state.show;
-    state.show = !saka;
+    let displayIt = state.show;
+    state.show = !displayIt;
   },
   changeNoShow(state) {
-    let manje = state.noShow;
-    state.noShow = !manje;
+    let doNotDisplayIt = state.noShow;
+    state.noShow = !doNotDisplayIt;
   },
   updateCurrentHeader(state, data) {
     state.currentHeader = data;
@@ -23,7 +23,7 @@ export default {
     state.currentUser = users;
   },
   SET_CARS(state, products) {
-    state.apiData = products;
+    state.carsFromAPI = products;
   },
   SET_CART(state, data) {
     state.apiCart = data;

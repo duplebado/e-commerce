@@ -1,6 +1,8 @@
 <template>
   <div id="contain">
-    <router-link to="/"><div id="cancel" variant="outline-danger">X</div></router-link>
+    <router-link to="/"
+      ><div id="cancel" variant="outline-danger">X</div></router-link
+    >
 
     <div id="carousel-container">
       <b-carousel
@@ -11,23 +13,33 @@
         style="text-shadow: 1px 1px 2px #333;"
       >
         <b-carousel-slide
-          v-bind:img-src="`http://localhost:2500/${productDetails.productPageCarousel_1}`"
+          v-bind:img-src="
+            `http://localhost:2500/${productDetails.productPageCarousel_1}`
+          "
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="`http://localhost:2500/${productDetails.productPageCarousel_2}`"
+          v-bind:img-src="
+            `http://localhost:2500/${productDetails.productPageCarousel_2}`
+          "
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="`http://localhost:2500/${productDetails.productPageCarousel_3}`"
+          v-bind:img-src="
+            `http://localhost:2500/${productDetails.productPageCarousel_3}`
+          "
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="`http://localhost:2500/${productDetails.productPageCarousel_4}`"
+          v-bind:img-src="
+            `http://localhost:2500/${productDetails.productPageCarousel_4}`
+          "
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="`http://localhost:2500/${productDetails.productPageCarousel_5}`"
+          v-bind:img-src="
+            `http://localhost:2500/${productDetails.productPageCarousel_5}`
+          "
           class="sizer"
         ></b-carousel-slide>
       </b-carousel>
@@ -69,17 +81,19 @@
         <other-details v-if="show" />
       </div>
       <div id="three">
-        <!-- <div id="compare-btn">COMPARE</div> -->
-        <!-- <div id="buy-btn">BUY NOW</div> -->
-            
-        <b-button variant="outline-warning" class="buy-btn" id="show-btn" @click="showModal">BUY NOW</b-button>
-        <!-- <b-button id="toggle-btn" @click="toggleModal">Toggle Modal</b-button> -->
+        <b-button
+          variant="outline-warning"
+          class="buy-btn"
+          id="show-btn"
+          @click="showModal"
+          >BUY NOW</b-button
+        >
 
         <b-modal ref="my-modal" hide-footer title="Cart">
           <div class="d-block text-center">
-            <h5>{{productDetails.name}} added to cart</h5>
+            <h5>{{ productDetails.name }} added to cart</h5>
           </div>
-           <b-button
+          <b-button
             class="mt-2"
             variant="outline-warning"
             @click="hideModal"
@@ -172,6 +186,7 @@ export default {
   },
   computed: {
     productDetails() {
+      // console.log(this.$store.state.productDetailsDisplayssss);
       return this.$store.state.productDetailsDisplay;
     },
     show() {
@@ -186,16 +201,16 @@ export default {
       this.$refs["my-modal"].show();
     },
     hideModal() {
-      this.$router.push({path: '/'})
+      this.$router.push({ path: "/" });
       this.$refs["my-modal"].hide();
     },
     proceedToCart(productDetails) {
       // We pass the ID of the button that we want to return focus to
       // when the modal has hidden
-    //   this.$refs["my-modal"].toggle("#toggle-btn");
-      this.$store.commit('apiCart', productDetails)
-      this.$router.push({path: '/cart'})
-    //   console.log(productDetails)
+      //   this.$refs["my-modal"].toggle("#toggle-btn");
+      this.$store.commit("apiCart", productDetails);
+      this.$router.push({ path: "/cart" });
+      //   console.log(productDetails)
     },
   },
 };
@@ -403,7 +418,7 @@ export default {
   height: 60px;
   text-align: center;
   width: 160px;
-  background-color: rgb(255,193,7);
+  background-color: rgb(255, 193, 7);
 }
 .fnt-size {
   font-size: 11px;

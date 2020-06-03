@@ -32,7 +32,7 @@
             <!-- <b-dropdown-item ><router-link id="no-color2" to='/create-account'>Login</router-link></b-dropdown-item> -->
             <b-dropdown-item
               ><router-link id="no-color2" to="/create-account"
-                >Create An Account</router-link
+                ><div>Create An Account</div></router-link
               ></b-dropdown-item
             >
             <!-- <b-dropdown-item href="#">RU</b-dropdown-item>
@@ -44,8 +44,10 @@
         <b-nav-item
           ><router-link id="no-color" to="/cart">Cart</router-link></b-nav-item
         >
-         <b-nav-item
-          ><router-link id="no-color" to="/dashboard">Dashboard</router-link></b-nav-item
+        <b-nav-item
+          ><router-link id="no-color" to="/dashboard"
+            >Dashboard</router-link
+          ></b-nav-item
         >
         <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
       </b-navbar-nav>

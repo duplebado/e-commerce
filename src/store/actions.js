@@ -1,4 +1,5 @@
 import axios from "axios";
+import loginPage from "../router";
 
 export default {
   getUser({ commit }) {
@@ -17,7 +18,7 @@ export default {
     axios
       .get("http://localhost:2500/car")
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         let products = res.data;
         commit("SET_CARS", products);
       })
@@ -48,11 +49,13 @@ export default {
     return axios
       .post("http://localhost:2500/login", credentials)
       .then(({ data }) => {
+        console.log("successful");
         commit("SET_USER_DATA", data);
-        this.$router.push({ path: "/dashboard" });
+        console.log(loginPage);
+        loginPage.push({ path: "/dashboard" });
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        // console.log(err.response.data.message);
         commit("SET_ERROR_MESSAGE", err.response.data.message);
       });
   },
