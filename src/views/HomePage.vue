@@ -5,12 +5,12 @@
         <ECommerceCategory />
       </div>
 
-      <div id="slider" style="margin-right: 15px">
+      <div id="slider">
         <ECommerceSlider />
       </div>
 
       <div id="right-content">
-        <ECommerceBody />
+        <ECommerceBody v-for="info in cars" :key="info.id" :info="info" />
       </div>
     </div>
   </div>
@@ -28,21 +28,29 @@ export default {
     ECommerceBody,
     ECommerceSlider,
   },
+  computed: {
+    cars() {
+      // console.log("Home page: ", this.$store.state.carsFromAPI);
+
+      return this.$store.state.carsFromAPI;
+    },
+  },
 };
 </script>
 
 <style scoped>
 #container {
-  width: 100% vw;
+  width: 1349px;
   min-height: 600px;
 }
 #slider {
   background-color: dimgray;
   float: right;
-  width: 79%;
+  width: 79.3%;
   min-height: 20px;
   border-radius: 5px;
   margin: 4px 2px 2px 2px;
+  margin-right: 15px;
 }
 #left-content,
 #right-content {

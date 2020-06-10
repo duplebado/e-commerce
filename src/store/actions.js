@@ -16,23 +16,11 @@ export default {
   },
   getCars({ commit }) {
     axios
-      .get("http://localhost:2500/car")
-      .then((res) => {
-        // console.log(res);
-        let products = res.data;
-        commit("SET_CARS", products);
-      })
-      .catch((err) => {
-        console.log("error occurred", err);
-      });
-  },
-  getCart({ commit }) {
-    axios
-      .get("http://localhost:2500/cart")
+      .get("https://my-ecommercev1.herokuapp.com/car")
       .then((res) => {
         console.log(res);
         let products = res.data;
-        commit("SET_CART", products);
+        commit("SET_CARS", products);
       })
       .catch((err) => {
         console.log("error occurred", err);

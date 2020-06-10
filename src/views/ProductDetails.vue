@@ -46,7 +46,9 @@
     </div>
     <div id="right-of-carousel">
       <div id="car-name">{{ productDetails.name }}</div>
-      <div id="car-price">Price: ₦{{ productDetails.price }}</div>
+      <div id="car-price">
+        Price: ₦ {{ changeToReadableFormat(productDetails.price) }}
+      </div>
       <div id="general-info">
         <h6>GENERAL INFORMATION</h6>
         <hr />
@@ -85,7 +87,7 @@
           variant="outline-warning"
           class="buy-btn"
           id="show-btn"
-          @click="showModal"
+          @click="showModal(productDetails)"
           >BUY NOW</b-button
         >
 
@@ -94,7 +96,7 @@
             <h5>{{ productDetails.name }} added to cart</h5>
           </div>
           <b-button
-            class="mt-2"
+            class="mt-3"
             variant="outline-warning"
             @click="hideModal"
             block
@@ -104,7 +106,7 @@
             class="mt-3"
             variant="outline-success"
             block
-            @click="proceedToCart(productDetails)"
+            @click="proceedToCart()"
             >VIEW CART AND CHECKOUT</b-button
           >
         </b-modal>
@@ -186,7 +188,6 @@ export default {
   },
   computed: {
     productDetails() {
-      // console.log(this.$store.state.productDetailsDisplayssss);
       return this.$store.state.productDetailsDisplay;
     },
     show() {
@@ -197,20 +198,54 @@ export default {
     },
   },
   methods: {
-    showModal() {
+    showModal(productDetails) {
       this.$refs["my-modal"].show();
+      this.$store.commit("AddToLocalStorageShoppingCart", productDetails);
     },
     hideModal() {
+      // this.$refs["my-modal"].hide();
       this.$router.push({ path: "/" });
-      this.$refs["my-modal"].hide();
     },
-    proceedToCart(productDetails) {
-      // We pass the ID of the button that we want to return focus to
-      // when the modal has hidden
-      //   this.$refs["my-modal"].toggle("#toggle-btn");
-      this.$store.commit("apiCart", productDetails);
+    proceedToCart() {
       this.$router.push({ path: "/cart" });
-      //   console.log(productDetails)
+    },
+    changeToReadableFormat(price) {
+      let stringedPrice = String(price).split("");
+      let count = 0;
+
+      if (stringedPrice.length % 3 == 0) {
+        let numberOfCommasToInsert = stringedPrice.length / 3 - 1;
+
+        for (let i = 1; i <= numberOfCommasToInsert; i++) {
+          if (count == 0) {
+            stringedPrice.splice(3, 0, " ");
+            count++;
+          } else {
+            let whereToInsertTheComma = i * 3 + count;
+            stringedPrice.splice(whereToInsertTheComma, 0, " ");
+            count++;
+          }
+        }
+        return stringedPrice.join("");
+      } else {
+        let whereTheFirstCommaShouldBe = stringedPrice.length % 3;
+        let numberOfCommasToInsert =
+          (stringedPrice.length - whereTheFirstCommaShouldBe) / 3;
+
+        for (let i = 0; i < numberOfCommasToInsert; i++) {
+          if (count == 0) {
+            stringedPrice.splice(whereTheFirstCommaShouldBe, 0, " ");
+            count++;
+          } else {
+            let whereToInsertTheComma =
+              i * 3 + whereTheFirstCommaShouldBe + count;
+
+            stringedPrice.splice(whereToInsertTheComma, 0, " ");
+            count++;
+          }
+        }
+        return stringedPrice.join("");
+      }
     },
   },
 };
@@ -240,7 +275,7 @@ export default {
 }
 #contain {
   float: left;
-  /* background-color: yellow; */
+  background-color: white;
   width: 1349px;
   height: 586px;
 }

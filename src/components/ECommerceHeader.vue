@@ -22,8 +22,37 @@
               >Search</b-button
             >
           </b-nav-form>
+          <b-navbar-nav>
+            <b-nav-item
+              ><router-link id="no-color" to="/cart"
+                >Cart</router-link
+              ></b-nav-item
+            >
+          </b-navbar-nav>
+          <b-nav-item-dropdown
+            id="no-color2"
+            :text="userFirstname"
+            right
+            v-if="!stateOfUser"
+          >
+            <b-dropdown-item
+              ><router-link id="no-color2" to="/dashboard"
+                ><div>Account</div></router-link
+              ></b-dropdown-item
+            >
+            <b-dropdown-item
+              ><router-link id="no-color2" to="/login"
+                ><div>Logout</div></router-link
+              ></b-dropdown-item
+            >
+          </b-nav-item-dropdown>
 
-          <b-nav-item-dropdown id="no-color" text="Login" right>
+          <b-nav-item-dropdown
+            id="no-color"
+            text="Login"
+            right
+            v-if="stateOfUser"
+          >
             <b-dropdown-item
               ><router-link id="no-color2" to="/login"
                 ><div>Login</div></router-link
@@ -40,17 +69,6 @@
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
-      <b-navbar-nav>
-        <b-nav-item
-          ><router-link id="no-color" to="/cart">Cart</router-link></b-nav-item
-        >
-        <b-nav-item
-          ><router-link id="no-color" to="/dashboard"
-            >Dashboard</router-link
-          ></b-nav-item
-        >
-        <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
-      </b-navbar-nav>
     </b-navbar>
   </div>
 </template>
@@ -60,6 +78,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   name: "ECommerceHeader",
+  computed: {
+    stateOfUser() {
+      if (JSON.parse(localStorage.getItem("user"))) {
+        return false;
+      }
+      return true;
+    },
+    userFirstname() {
+      return "Hi, " + JSON.parse(localStorage.getItem("user")).firstname;
+    },
+  },
 };
 </script>
 

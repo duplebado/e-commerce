@@ -1,46 +1,45 @@
 <template>
   <div>
-    <!-- <b-dropdown id="dropdown-offset" offset="25" text="Category" class="m-2">
-          <b-dropdown-item href="#">Sedan</b-dropdown-item>
-          <b-dropdown-item href="#">Saloon</b-dropdown-item>
-          <b-dropdown-item href="#">Coupe</b-dropdown-item>
-          <b-dropdown-item href="#">Trucks</b-dropdown-item>
-          <b-dropdown-item href="#">SUV</b-dropdown-item>
-          <b-dropdown-item href="#">Mini Van</b-dropdown-item>
-          <b-dropdown-item href="#">Super Cars</b-dropdown-item>
-          <b-dropdown-item href="#">Bus</b-dropdown-item>
-        </b-dropdown> -->
-    <div id="menu-container" v-for="item in menu" :key="item">
-      <div id="menu-option">{{ item }}</div>
+    <div id="menu-container" v-for="item in menu" :key="item.link">
+      <router-link :to="`/category/${item.link}`" class="no-underline">
+        <div id="menu-option">
+          {{ item.name }}
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   name: "ECommerceCategory",
   data() {
     return {
-      menu: {
-        1: "Sedan",
-        2: "Saloon",
-        3: "Coupe",
-        4: "Trucks",
-        5: "SUV",
-        6: "Mini",
-        7: "Super Cars",
-        8: "Bus",
-      },
+      menu: [
+        { name: "Coupe", link: "coupe" },
+        { name: "Mini Bus", link: "mini-bus" },
+        { name: "Mini Van", link: "mini-van" },
+        { name: "Pick-up Truck", link: "pickup" },
+        { name: "Sedan", link: "sedan" },
+        { name: "Sport Car", link: "sport-car" },
+        { name: "SUV", link: "suv" },
+      ],
     };
+  },
+  methods: {
+    whatisGonnaBeDisplayedInCategoryPage(currentCategory) {
+      this.$store.commit(
+        "createCategoryArrayThatMatchesCurrentCategoryName",
+        currentCategory
+      );
+    },
   },
 };
 </script>
 
 <style scoped>
 #menu-container {
-  margin-left: 5px;
+  margin-left: 6px;
   margin-right: 5px;
   margin-top: 2px;
   padding-top: 2.7px;
@@ -55,7 +54,13 @@ export default {
   width: 219px;
   height: 28px;
   padding-top: 2px;
-  /* background-color: yellow; */
+  /* background-color: pink; */
   color: white;
+}
+#menu-container:hover {
+  background-color: rebeccapurple;
+}
+.no-underline {
+  text-decoration: none;
 }
 </style>

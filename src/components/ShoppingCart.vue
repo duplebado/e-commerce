@@ -2,20 +2,32 @@
   <div id="cart-container">
     <form action="" method="post">
       <div class="div-border-1">
-        <div id="image"></div>
-        <div id="product-name"></div>
-        <div id="buttons"><button>Delete from cart</button></div>
+        <div id="image">
+          <img
+            v-bind:src="`http://localhost:2500/${car.homePageImageDisplay}`"
+          />
+        </div>
+        <div id="product-name">{{ car.name }}</div>
+        <div id="buttons">
+          <button @click="deleteItem()">Delete from cart</button>
+        </div>
       </div>
       <div id="div-border-2">
         <div id="select-div">
-          <b-form-select class="sizer" v-model="selected" :options="options"></b-form-select>
+          <b-form-select
+            class="sizer"
+            v-model="selected"
+            :options="options"
+          ></b-form-select>
         </div>
       </div>
       <div class="div-border-3">
-          <div id="unit-price"> ₦100,000,000</div>
+        <div id="unit-price">{{ changeToReadableFormat(car.price) }}</div>
       </div>
       <div class="div-border-4">
-          <div id="sub-total">₦100,000,000</div>
+        <div id="sub-total">
+          {{ changeToReadableFormat(changeCountNumber(car.price)) }}
+        </div>
       </div>
     </form>
   </div>
@@ -23,18 +35,75 @@
 
 <script>
 export default {
-  name: "shoppingCart",
+  props: {
+    car: {
+      type: Object,
+    },
+  },
   data() {
     return {
-      selected: null,
+      selected: "1",
       options: [
-        { value: "a", text: 1 },
-        { value: "b", text: 2 },
-        { value: "c", text: 3 },
-        { value: "d", text: 4 },
-        { value: "e", text: 5 },
+        { value: "1", text: 1 },
+        { value: "2", text: 2 },
+        { value: "3", text: 3 },
+        { value: "4", text: 4 },
+        { value: "5", text: 5 },
+        { value: "6", text: 6 },
+        { value: "7", text: 7 },
+        { value: "8", text: 8 },
+        { value: "9", text: 9 },
+        { value: "10", text: 10 },
       ],
     };
+  },
+  methods: {
+    changeCountNumber(price) {
+      return this.selected * price;
+    },
+    changeToReadableFormat(price) {
+      let stringedPrice = String(price).split("");
+      let count = 0;
+
+      if (stringedPrice.length % 3 == 0) {
+        let numberOfCommasToInsert = stringedPrice.length / 3 - 1;
+
+        for (let i = 1; i <= numberOfCommasToInsert; i++) {
+          if (count == 0) {
+            stringedPrice.splice(3, 0, " ");
+            count++;
+          } else {
+            let whereToInsertTheComma = i * 3 + count;
+            stringedPrice.splice(whereToInsertTheComma, 0, " ");
+            count++;
+          }
+        }
+        return stringedPrice.join("");
+      } else {
+        let whereTheFirstCommaShouldBe = stringedPrice.length % 3;
+        let numberOfCommasToInsert =
+          (stringedPrice.length - whereTheFirstCommaShouldBe) / 3;
+
+        for (let i = 0; i < numberOfCommasToInsert; i++) {
+          if (count == 0) {
+            stringedPrice.splice(whereTheFirstCommaShouldBe, 0, " ");
+            count++;
+          } else {
+            let whereToInsertTheComma =
+              i * 3 + whereTheFirstCommaShouldBe + count;
+
+            stringedPrice.splice(whereToInsertTheComma, 0, " ");
+            count++;
+          }
+        }
+        return stringedPrice.join("");
+      }
+    },
+    deleteItem() {
+      this.$emit("delete");
+      // state.shoppingCart = JSON.parse(localStorage.getItem("userCart"));
+      // this.$store.commit("deleteFromLocalStorageShoppinCart", id);
+    },
   },
 };
 </script>
@@ -59,15 +128,19 @@ export default {
   border-top-left-radius: 8px;
 }
 #image {
-  background-color: yellow;
+  /* background-color: yellow; */
   float: left;
   margin-top: 9.5px;
   margin-left: 9.5px;
   width: 100px;
   height: 90px;
 }
+img {
+  width: 100px;
+  height: 90px;
+}
 #product-name {
-  background-color: turquoise;
+  /* background-color: turquoise; */
   float: left;
   width: 372px;
   height: 60px;
@@ -84,7 +157,7 @@ export default {
 button {
   margin-left: 221.5px;
   /* background-color: red; */
-  color:red;
+  color: red;
   font-size: 15px;
   font-weight: normal;
   width: 150px;
@@ -104,9 +177,10 @@ button {
   width: 70px;
   height: 50px;
   margin-top: -40px;
-  float:left;
+  float: left;
 }
 .sizer {
+  /* background-color: pink; */
   width: 70px;
   height: 50px;
   margin-top: 70px;
@@ -119,15 +193,15 @@ button {
   border-right: 1px solid black;
   display: inline-block;
 }
-#unit-price{
-    float: left;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 35px;
-    margin-left: 19px;
-    /* background: red;3 */
-    width:200px;
-    height: 44px;
+#unit-price {
+  float: left;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 35px;
+  margin-left: 19px;
+  /* background: red;3 */
+  width: 200px;
+  height: 44px;
 }
 .div-border-4 {
   background-color: white;
@@ -137,14 +211,14 @@ button {
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
 }
-#sub-total{
-    float: left;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 35px;
-    margin-left: 19px;
-    /* background: red; */
-    width:200px;
-    height: 44px;
+#sub-total {
+  float: left;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 35px;
+  margin-left: 19px;
+  /* background: red; */
+  width: 200px;
+  height: 44px;
 }
 </style>

@@ -9,7 +9,7 @@
     </div>
     <div id="list-div">
       <ul>
-        <li v-for="details in carFeaturesForTheCurrentPage" :key="details">
+        <li v-for="details in carFeaturesForTheCurrentPage" :key="details.id">
           {{ details.description }}
         </li>
       </ul>
