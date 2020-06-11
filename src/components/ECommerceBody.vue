@@ -1,12 +1,7 @@
 <template>
   <div>
     <b-card id="custom">
-      <img
-        v-bind:src="
-          `https://my-ecommercev1.herokuapp.com/${info.homePageImageDisplay}`
-        "
-        class="img-size"
-      />
+      <img :src="img[0]" class="img-size" />
       <b-card-text class="product-text">
         <p class="carName">{{ info.name }}</p>
         <p>₦ {{ changeToReadableFormat(info.price) }}</p>
@@ -29,7 +24,15 @@ export default {
       type: Object,
     },
   },
-
+  data() {
+    return {
+      img: [
+        {
+          imgUrl: require("https://my-ecommercev1.herokuapp.com/uploads/2020-06-10T16-32-30.038Z0.jpg"),
+        },
+      ],
+    };
+  },
   methods: {
     redirectToCorrespondingProductDetailsPage(info) {
       this.$store.commit("putSomethingInproductDetailsDisplay", info);

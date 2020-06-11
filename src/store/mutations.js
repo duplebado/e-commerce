@@ -18,9 +18,9 @@ export default {
   updateToBeUsedByPeculiarInfoPage(state, data) {
     state.toBeUsedByPeculiarInfoPage = data;
   },
-  GET_USER(state, users) {
-    state.currentUser = users;
-  },
+  // GET_USER(state, users) {
+  //   state.currentUser = users;
+  // },
   SET_CARS(state, products) {
     state.carsFromAPI = products;
   },

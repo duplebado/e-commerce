@@ -2,18 +2,6 @@ import axios from "axios";
 import loginPage from "../router";
 
 export default {
-  getUser({ commit }) {
-    axios
-      .get("http://localhost:2500/dashboard")
-      .then((res) => {
-        console.log(res);
-        let users = res.data;
-        commit("GET_USER", users);
-      })
-      .catch((err) => {
-        console.log("error occurred", err);
-      });
-  },
   getCars({ commit }) {
     axios
       .get("https://my-ecommercev1.herokuapp.com/car")
