@@ -52,7 +52,7 @@
             </div>
           </div>
           <div v-if="errorMessage">
-            <p>{{ errorMessage }}</p>
+            <p style="color: red">{{ errorMessage }}</p>
           </div>
           <div id="login-btn">
             <b-button type="submit" block variant="primary">LOGIN</b-button>
@@ -91,9 +91,7 @@
           </div>
           <div id="gmail-btn">
             <div id="gmail-btn">
-              <b-button block variant="danger"
-                >CREATE ACCOUNT WITH FACEBOOK</b-button
-              >
+              <b-button block variant="danger">CONTINUE WITH GMAIL</b-button>
             </div>
           </div>
         </div>

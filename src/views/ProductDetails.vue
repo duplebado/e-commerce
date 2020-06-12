@@ -13,33 +13,23 @@
         style="text-shadow: 1px 1px 2px #333;"
       >
         <b-carousel-slide
-          v-bind:img-src="
-            `http://localhost:2500/${productDetails.productPageCarousel_1}`
-          "
+          :img-src="`${productDetails.productPageCarousel_1}`"
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="
-            `http://localhost:2500/${productDetails.productPageCarousel_2}`
-          "
+          :img-src="`${productDetails.productPageCarousel_2}`"
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="
-            `http://localhost:2500/${productDetails.productPageCarousel_3}`
-          "
+          :img-src="`${productDetails.productPageCarousel_3}`"
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="
-            `http://localhost:2500/${productDetails.productPageCarousel_4}`
-          "
+          :img-src="`${productDetails.productPageCarousel_4}`"
           class="sizer"
         ></b-carousel-slide>
         <b-carousel-slide
-          v-bind:img-src="
-            `http://localhost:2500/${productDetails.productPageCarousel_5}`
-          "
+          :img-src="`${productDetails.productPageCarousel_5}`"
           class="sizer"
         ></b-carousel-slide>
       </b-carousel>
@@ -260,6 +250,7 @@ export default {
   width: 710px;
   height: 339px;
 }
+
 #cancel {
   position: absolute;
   font-size: 30px;

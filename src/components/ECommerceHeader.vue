@@ -29,12 +29,7 @@
               ></b-nav-item
             >
           </b-navbar-nav>
-          <b-nav-item-dropdown
-            id="no-color2"
-            :text="userFirstname"
-            right
-            v-if="!stateOfUser"
-          >
+          <b-nav-item-dropdown id="no-color2" right v-if="!stateOfUser">
             <b-dropdown-item
               ><router-link id="no-color2" to="/dashboard"
                 ><div>Account</div></router-link
@@ -42,7 +37,7 @@
             >
             <b-dropdown-item
               ><router-link id="no-color2" to="/login"
-                ><div>Logout</div></router-link
+                ><div @click="logOut">Logout</div></router-link
               ></b-dropdown-item
             >
           </b-nav-item-dropdown>
@@ -80,13 +75,19 @@ export default {
   name: "ECommerceHeader",
   computed: {
     stateOfUser() {
-      if (JSON.parse(localStorage.getItem("user"))) {
+      console.log(JSON.parse(localStorage.getItem("user")));
+      if (JSON.parse(localStorage.getItem("user")) == null) {
         return false;
       }
       return true;
     },
     userFirstname() {
       return "Hi, " + JSON.parse(localStorage.getItem("user")).firstname;
+    },
+  },
+  methods: {
+    logOut() {
+      this.$store.commit("logOutUser", null);
     },
   },
 };

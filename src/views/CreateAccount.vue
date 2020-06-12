@@ -86,9 +86,10 @@
                 placeholder="Enter password"
               ></b-form-input>
               <div v-if="$v.form.password.$error" class="errorMessage">
-                <p v-if="!$v.form.password.required">Password is required ****</p>
+                <p v-if="!$v.form.password.required">
+                  Password is required ****
+                </p>
               </div>
-
             </b-form-group>
           </div>
         </div>
@@ -105,11 +106,12 @@
                 type="number"
                 required
                 @blur="$v.form.number.$touch()"
-
                 placeholder="Enter phone number"
               ></b-form-input>
-               <div v-if="$v.form.number.$error" class="errorMessage">
-                <p v-if="!$v.form.number.required">Phone Number is required ****</p>
+              <div v-if="$v.form.number.$error" class="errorMessage">
+                <p v-if="!$v.form.number.required">
+                  Phone Number is required ****
+                </p>
               </div>
             </b-form-group>
           </div>
@@ -143,12 +145,12 @@
         </div>
         <div id="gmail">
           <div id="create-button">
-            <b-button block variant="danger">REGISTER WITH GMAIL</b-button>
+            <b-button block variant="danger">CONTINUE WITH GMAIL</b-button>
           </div>
         </div>
         <div id="existingUser-login">
           <p>Already have an account?</p>
-          <a href="">LOGIN</a>
+          <router-link to="/login"><a>LOGIN</a></router-link>
         </div>
       </form>
     </div>

@@ -1,13 +1,13 @@
 <template>
   <div>
     <b-card id="custom">
-      <img :src="img[0]" class="img-size" />
+      <img :src="`${info.homePageImageDisplay}`" class="img-size" />
       <b-card-text class="product-text">
         <p class="carName">{{ info.name }}</p>
         <p>₦ {{ changeToReadableFormat(info.price) }}</p>
       </b-card-text>
 
-      <a href="#" @click="redirectToCorrespondingProductDetailsPage(info)">
+      <a @click="redirectToCorrespondingProductDetailsPage(info)">
         <b-button id="custom-style">
           DETAILS
         </b-button>
@@ -24,15 +24,15 @@ export default {
       type: Object,
     },
   },
-  data() {
-    return {
-      img: [
-        {
-          imgUrl: require("https://my-ecommercev1.herokuapp.com/uploads/2020-06-10T16-32-30.038Z0.jpg"),
-        },
-      ],
-    };
-  },
+  // data() {
+  //   return {
+  //     img: [
+  //       {
+  //         imgUrl: require("https://my-ecommercev1.herokuapp.com/uploads/2020-06-10T16-32-30.038Z0.jpg"),
+  //       },
+  //     ],
+  //   };
+  // },
   methods: {
     redirectToCorrespondingProductDetailsPage(info) {
       this.$store.commit("putSomethingInproductDetailsDisplay", info);

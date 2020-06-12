@@ -80,4 +80,13 @@ export default {
 
     state.category = carsThatFitIntoCurrentCategory;
   },
+  logOutUser(state, data) {
+    state.user = data;
+
+    console.log("LOG OUT O");
+
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    axios.defaults.headers.common["Authorization"] = null;
+  },
 };

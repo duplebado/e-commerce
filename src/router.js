@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -9,6 +10,7 @@ import CreateAccount from "./views/CreateAccount.vue";
 import Login from "./views/Login.vue";
 import Dashboard from "./views/Dashboard.vue";
 import ClickedCategory from "./views/ClickedCategory.vue";
+import emailConfirmation from "./views/emailConfirmation.vue";
 import store from "../src/store/";
 import Nprogress from "nprogress";
 
@@ -53,11 +55,23 @@ export const routes = [
   {
     path: "/category/:link",
     component: ClickedCategory,
-    beforeEnter(to, from, next) {
+    // beforeEnter(to, from, next) {
+    do() {
+      console.log("before enter");
       // Nprogress.start();
       store.dispatch("getCars").then(() => {
         // Nprogress.done();
-        next();
+        console.log("after enter");
+        // next();
+      });
+    },
+  },
+  {
+    path: "/email-confirmation/:token",
+    component: emailConfirmation,
+    beforeEnter: (to, from, next) => {
+      store.dispatch("confirmAccount", {
+        token: to.params.token,
       });
     },
   },

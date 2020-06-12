@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     cars() {
-      // console.log("Home page: ", this.$store.state.carsFromAPI);
+      console.log("Home page: ", this.$store.state.carsFromAPI);
 
       return this.$store.state.carsFromAPI;
     },

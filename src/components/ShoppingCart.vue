@@ -3,9 +3,7 @@
     <form action="" method="post">
       <div class="div-border-1">
         <div id="image">
-          <img
-            v-bind:src="`http://localhost:2500/${car.homePageImageDisplay}`"
-          />
+          <img :src="`${car.homePageImageDisplay}`" />
         </div>
         <div id="product-name">{{ car.name }}</div>
         <div id="buttons">

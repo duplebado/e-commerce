@@ -25,6 +25,14 @@ export default {
     ECommerceCategory,
     ECommerceBody,
   },
+  created() {
+    console.log(this.$store.state.carsFromAPI);
+    this.productItem = this.$store.state.carsFromAPI.filter((item) => {
+      return item.categoryLink === this.$route.params.link;
+    });
+    console.log(this.productItem);
+  },
+
   data() {
     return {
       productItem: "",
@@ -45,13 +53,6 @@ export default {
     nameOfCategory() {
       return this.$store.state.category[0].category;
     },
-  },
-  created() {
-    console.log(this.$store.state.carsFromAPI);
-    this.productItem = this.$store.state.carsFromAPI.filter((item) => {
-      return item.categoryLink === this.$route.params.link;
-    });
-    console.log(this.productItem);
   },
 };
 </script>
