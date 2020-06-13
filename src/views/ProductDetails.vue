@@ -80,28 +80,29 @@
           @click="showModal(productDetails)"
           >BUY NOW</b-button
         >
-
-        <b-modal ref="my-modal" hide-footer title="Cart">
-          <div class="d-block text-center">
-            <h5>{{ productDetails.name }} added to cart</h5>
-          </div>
-          <b-button
-            class="mt-3"
-            variant="outline-warning"
-            id="modal-top"
-            @click="hideModal"
-            block
-            >CONTINUE SHOPPING</b-button
-          >
-          <b-button
-            class="mt-3"
-            variant="outline-success"
-            id="modal-bottom"
-            block
-            @click="proceedToCart()"
-            >VIEW CART AND CHECKOUT</b-button
-          >
-        </b-modal>
+        <transition name="fade">
+          <b-modal ref="my-modal" hide-footer title="Cart">
+            <div class="d-block text-center">
+              <h5>{{ productDetails.name }} added to cart</h5>
+            </div>
+            <b-button
+              class="mt-3"
+              variant="outline-warning"
+              id="modal-top"
+              @click="hideModal"
+              block
+              >CONTINUE SHOPPING</b-button
+            >
+            <b-button
+              class="mt-3"
+              variant="outline-success"
+              id="modal-bottom"
+              block
+              @click="proceedToCart()"
+              >VIEW CART AND CHECKOUT</b-button
+            >
+          </b-modal>
+        </transition>
       </div>
 
       <div id="two">
@@ -244,6 +245,16 @@ export default {
 </script>
 
 <style scoped>
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease-out;
+}
+.fade-leave {
+  opacity: 0;
+}
 .shadow-lee {
   box-shadow: 1px 1px 10px dimgrey;
   color: rebeccapurple;

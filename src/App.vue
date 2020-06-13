@@ -5,7 +5,9 @@
     </div>
 
     <div id="body">
-      <router-view></router-view>
+      <transition name="slide-fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
 
     <div id="footer">
@@ -53,5 +55,19 @@ export default {
   min-width: 100vw;
   /* min-width: 1349px; */
   min-height: 100px;
+}
+
+/* TRANSITIONS */
+.slide-fade-enter {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.1s ease;
+}
+.slide-fade-leave {
+  transform: translateX(-10px);
+  opacity: 0;
 }
 </style>
