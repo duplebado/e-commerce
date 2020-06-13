@@ -2,7 +2,7 @@
   <div>
     <div id="menu-container" v-for="item in menu" :key="item.link">
       <router-link :to="`/category/${item.link}`" class="no-underline">
-        <div id="menu-option">
+        <div id="menu-option" @click="getCurrentCategory(item.name)">
           {{ item.name }}
         </div>
       </router-link>
@@ -25,6 +25,14 @@ export default {
         { name: "SUV", link: "suv" },
       ],
     };
+  },
+  methods: {
+    getCurrentCategory(category) {
+      this.$store.commit(
+        "createCategoryArrayThatMatchesCurrentCategoryName",
+        category
+      );
+    },
   },
   // methods: {
   //   whatisGonnaBeDisplayedInCategoryPage(currentCategory) {

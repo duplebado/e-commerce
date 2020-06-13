@@ -25,35 +25,51 @@ export default {
     ECommerceCategory,
     ECommerceBody,
   },
-  created() {
-    console.log(this.$store.state.carsFromAPI);
-    this.productItem = this.$store.state.carsFromAPI.filter((item) => {
-      return item.categoryLink === this.$route.params.link;
-    });
-    console.log(this.productItem);
-  },
-
-  data() {
-    return {
-      productItem: "",
-    };
-  },
   computed: {
-    currentCarsThatBelongToThisCategory() {
-      if (!this.$store.state.category.length) {
-        return null;
-      } else {
-        return this.$store.state.category;
-      }
-      // return this.$store.state.category;
-    },
-    numberOfCarsInCategory() {
-      return this.$store.state.category.length;
-    },
-    nameOfCategory() {
-      return this.$store.state.category[0].category;
+    productItem() {
+      return this.$store.state.category;
     },
   },
+  // data() {
+  //   return {
+  //     productItem: null,
+  //   };
+  // },
+  // computed(){
+  //   console.log()
+  // },
+  // created() {
+  //   console.log(this.$store.state.carsFromAPI);
+  //   this.productItem = this.$store.state.carsFromAPI.filter((item) => {
+  //     return item.categoryLink === this.$route.params.link;
+  //   });
+  //   console.log(
+  //     "these are the cars available in this category: ",
+  //     this.productItem
+  //   );
+  // },
+
+  // data() {
+  //   return {
+  //     productItem: "",
+  //   };
+  // },
+  // computed: {
+  //   currentCarsThatBelongToThisCategory() {
+  //     if (!this.$store.state.category.length) {
+  //       return null;
+  //     } else {
+  //       return this.$store.state.category;
+  //     }
+  //     // return this.$store.state.category;
+  //   },
+  //   numberOfCarsInCategory() {
+  //     return this.$store.state.category.length;
+  //   },
+  //   nameOfCategory() {
+  //     return this.$store.state.category[0].category;
+  //   },
+  // },
 };
 </script>
 

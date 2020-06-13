@@ -55,16 +55,6 @@ export const routes = [
   {
     path: "/category/:link",
     component: ClickedCategory,
-    // beforeEnter(to, from, next) {
-    do() {
-      console.log("before enter");
-      // Nprogress.start();
-      store.dispatch("getCars").then(() => {
-        // Nprogress.done();
-        console.log("after enter");
-        // next();
-      });
-    },
   },
   {
     path: "/email-confirmation/:token",
