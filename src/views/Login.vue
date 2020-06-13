@@ -55,7 +55,7 @@
             <p style="color: red">{{ errorMessage }}</p>
           </div>
           <div id="login-btn">
-            <b-button type="submit" block variant="primary">LOGIN</b-button>
+            <b-button type="submit" block id="custom-color">LOGIN</b-button>
           </div>
           <div id="gmail-btn">
             <b-button block variant="danger">LOGIN WITH GMAIL</b-button>
@@ -82,7 +82,7 @@
               <!-- </router-link> -->
               <router-link style="text-decoration: none" to="/create-account">
                 <div style="width:340.25px">
-                  <b-button block variant="primary">
+                  <b-button block id="custom-color">
                     CREATE AN ACCOUNT
                   </b-button>
                 </div></router-link
@@ -231,5 +231,10 @@ a {
   /* background-color: blue; */
   /* float: left; */
   text-align: justify;
+}
+#custom-color {
+  background-color: rebeccapurple;
+  border: 0.1px solid rebeccapurple;
+  color: white;
 }
 </style>

@@ -18,4 +18,5 @@ export default {
   productDetailsDisplay: null,
   shoppingCart: null,
   category: null,
+  isUserLoggedIn: false,
 };

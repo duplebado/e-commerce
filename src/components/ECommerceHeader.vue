@@ -29,7 +29,12 @@
               ></b-nav-item
             >
           </b-navbar-nav>
-          <b-nav-item-dropdown id="no-color2" right v-if="!stateOfUser">
+          <b-nav-item-dropdown
+            id="no-color2"
+            right
+            v-if="loggedIn"
+            :text="userFirstname"
+          >
             <b-dropdown-item
               ><router-link id="no-color2" to="/dashboard"
                 ><div>Account</div></router-link
@@ -42,12 +47,7 @@
             >
           </b-nav-item-dropdown>
 
-          <b-nav-item-dropdown
-            id="no-color"
-            text="Login"
-            right
-            v-if="stateOfUser"
-          >
+          <b-nav-item-dropdown id="no-color" text="Login" right v-else>
             <b-dropdown-item
               ><router-link id="no-color2" to="/login"
                 ><div>Login</div></router-link
@@ -69,25 +69,28 @@
 </template>
 
 <script>
+import { authComputed } from "../store/helpers.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 export default {
   name: "ECommerceHeader",
+  created() {},
   computed: {
-    stateOfUser() {
-      console.log(JSON.parse(localStorage.getItem("user")));
-      if (JSON.parse(localStorage.getItem("user")) == null) {
-        return false;
-      }
-      return true;
-    },
+    ...authComputed,
     userFirstname() {
-      return "Hi, " + JSON.parse(localStorage.getItem("user")).firstname;
+      let user = JSON.parse(localStorage.getItem("user"));
+      if (user == null) {
+        return null;
+      } else {
+        return "Hi, " + user.firstname;
+      }
     },
   },
   methods: {
     logOut() {
-      this.$store.commit("logOutUser", null);
+      // this.stateOfUser = false;
+      // this.$store.dispatch("logOutUser");
+      this.$store.commit("CLEAR_USER_DATA");
     },
   },
 };

@@ -26,14 +26,14 @@ export default {
       ],
     };
   },
-  methods: {
-    whatisGonnaBeDisplayedInCategoryPage(currentCategory) {
-      this.$store.commit(
-        "createCategoryArrayThatMatchesCurrentCategoryName",
-        currentCategory
-      );
-    },
-  },
+  // methods: {
+  //   whatisGonnaBeDisplayedInCategoryPage(currentCategory) {
+  //     this.$store.commit(
+  //       "createCategoryArrayThatMatchesCurrentCategoryName",
+  //       currentCategory
+  //     );
+  //   },
+  // },
 };
 </script>
 

@@ -1,11 +1,11 @@
 /*eslint-disable*/
 
 import axios from "axios";
-import loginPage from "../router";
+import router from "../router";
 
 export default {
   getCars({ commit }) {
-    axios
+    return axios
       .get("https://my-ecommercev1.herokuapp.com/car")
       .then((res) => {
         console.log(res);
@@ -32,9 +32,9 @@ export default {
       data.message == "Email confirmation succesful" &&
       data.decoded.user
     ) {
-      loginPage.push("/login");
+      router.push("/login");
     } else {
-      loginPage.push("/email-confirmation");
+      router.push("/email-confirmation");
     }
     console.log(data);
   },
@@ -42,14 +42,17 @@ export default {
     return axios
       .post("https://my-ecommercev1.herokuapp.com/login", credentials)
       .then(({ data }) => {
-        console.log("successful");
         commit("SET_USER_DATA", data);
-        console.log(loginPage);
-        loginPage.push({ path: "/dashboard" });
+        // location.reload();
+        router.push({ path: "/dashboard" });
+        // router.reload();
       })
       .catch((err) => {
         // console.log(err.response.data.message);
         commit("SET_ERROR_MESSAGE", err.response.data.message);
       });
+  },
+  logoutUser({ commit }) {
+    commit("CLEAR_USER_DATA");
   },
 };

@@ -3,7 +3,13 @@
     This is the Dashboard
 
     <!-- <h4>Logged in successfully</h4> -->
-    <h4>{{ user.firstname }} {{ user.lastname }} is logged in successfully</h4>
+    <h4>
+      Hi {{ user.firstname }} {{ user.lastname }}, you have successfully logged.
+    </h4>
+    <p>
+      This website is a demo website that has been built for learning purposes
+      only. Thank you for checking it out, feel free to explore!
+    </p>
   </div>
 </template>
 

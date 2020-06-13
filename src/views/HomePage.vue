@@ -31,7 +31,7 @@ export default {
   computed: {
     cars() {
       console.log("Home page: ", this.$store.state.carsFromAPI);
-
+      // localStorage.removeItem("userCart");
       return this.$store.state.carsFromAPI;
     },
   },

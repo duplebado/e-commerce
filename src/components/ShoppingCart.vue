@@ -1,33 +1,33 @@
 <template>
   <div id="cart-container">
-    <form action="" method="post">
-      <div class="div-border-1">
-        <div id="image">
-          <img :src="`${car.homePageImageDisplay}`" />
-        </div>
-        <div id="product-name">{{ car.name }}</div>
-        <div id="buttons">
-          <button @click="deleteItem()">Delete from cart</button>
-        </div>
+    <div class="div-border-1">
+      <div id="image">
+        <img :src="`${car.homePageImageDisplay}`" />
       </div>
-      <div id="div-border-2">
-        <div id="select-div">
-          <b-form-select
-            class="sizer"
-            v-model="selected"
-            :options="options"
-          ></b-form-select>
-        </div>
+      <div id="product-name">{{ car.name }}</div>
+      <div id="buttons">
+        <button type="button" id="delete-button" @click="deleteItem(car.id)">
+          delete
+        </button>
       </div>
-      <div class="div-border-3">
-        <div id="unit-price">{{ changeToReadableFormat(car.price) }}</div>
+    </div>
+    <div id="div-border-2">
+      <div id="select-div">
+        <b-form-select
+          class="sizer"
+          v-model="selected"
+          :options="options"
+        ></b-form-select>
       </div>
-      <div class="div-border-4">
-        <div id="sub-total">
-          {{ changeToReadableFormat(changeCountNumber(car.price)) }}
-        </div>
+    </div>
+    <div class="div-border-3">
+      <div id="unit-price">{{ changeToReadableFormat(car.price) }}</div>
+    </div>
+    <div class="div-border-4">
+      <div id="sub-total">
+        {{ changeToReadableFormat(changeCountNumber(car.price)) }}
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -97,10 +97,10 @@ export default {
         return stringedPrice.join("");
       }
     },
-    deleteItem() {
-      this.$emit("delete");
+    deleteItem(id) {
+      // this.$emit("delete");
       // state.shoppingCart = JSON.parse(localStorage.getItem("userCart"));
-      // this.$store.commit("deleteFromLocalStorageShoppinCart", id);
+      this.$store.commit("deleteFromLocalStorageShoppinCart", id);
     },
   },
 };
@@ -218,5 +218,11 @@ button {
   /* background: red; */
   width: 200px;
   height: 44px;
+}
+#delete-button {
+  background-color: red;
+  color: white;
+  width: 60px;
+  border: 0.1px solid red;
 }
 </style>

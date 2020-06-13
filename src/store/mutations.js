@@ -26,10 +26,17 @@ export default {
   },
   SET_USER_DATA(state, userData) {
     state.user = userData.userData;
+    state.isUserLoggedIn = false;
     console.log(axios);
     localStorage.setItem("user", JSON.stringify(userData.userData));
     localStorage.setItem("token", JSON.stringify(userData.token));
     axios.defaults.headers.common["Authorization"] = `Bearer ${userData.token}`;
+    // location.reload();
+  },
+  CLEAR_USER_DATA() {
+    console.log("Inside-mutationsklkjdj");
+    localStorage.removeItem("user");
+    location.reload();
   },
   SET_ERROR_MESSAGE(state, errorMessage) {
     state.errorMessage = errorMessage;
@@ -56,16 +63,18 @@ export default {
       state.shoppingCart = JSON.parse(localStorage.getItem("userCart"));
     }
   },
-  // deleteFromLocalStorageShoppinCart(state, itemId) {
-  //   let cart = JSON.parse(localStorage.getItem("userCart"));
-  //   cart.forEach((item, index) => {
-  //     if (item.id === itemId) {
-  //       cart.splice(index, 1);
-  //     }
-  //   });
-  //   localStorage.setItem("userCart", JSON.stringify(cart));
-  //   state.shoppingCart = JSON.parse(localStorage.getItem("userCart"));
-  // },
+  deleteFromLocalStorageShoppinCart(state, itemId) {
+    console.log("in the delete");
+    let cart = JSON.parse(localStorage.getItem("userCart"));
+    cart.forEach((item, index) => {
+      if (item.id === itemId) {
+        cart.splice(index, 1);
+      }
+    });
+    localStorage.setItem("userCart", JSON.stringify(cart));
+    state.shoppingCart = JSON.parse(localStorage.getItem("userCart"));
+    location.reload();
+  },
   createCategoryArrayThatMatchesCurrentCategoryName(
     state,
     currentCategoryName
@@ -79,14 +88,5 @@ export default {
     });
 
     state.category = carsThatFitIntoCurrentCategory;
-  },
-  logOutUser(state, data) {
-    state.user = data;
-
-    console.log("LOG OUT O");
-
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    axios.defaults.headers.common["Authorization"] = null;
   },
 };

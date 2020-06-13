@@ -1,8 +1,8 @@
 <template>
   <div id="contain">
-    <router-link to="/"
-      ><div id="cancel" variant="outline-danger">X</div></router-link
-    >
+    <!-- <router-link to="/"
+      ><div id="cancel" variant="outline-danger">-</div></router-link
+    > -->
 
     <div id="carousel-container">
       <b-carousel
@@ -88,6 +88,7 @@
           <b-button
             class="mt-3"
             variant="outline-warning"
+            id="modal-top"
             @click="hideModal"
             block
             >CONTINUE SHOPPING</b-button
@@ -95,6 +96,7 @@
           <b-button
             class="mt-3"
             variant="outline-success"
+            id="modal-bottom"
             block
             @click="proceedToCart()"
             >VIEW CART AND CHECKOUT</b-button
@@ -250,19 +252,13 @@ export default {
   width: 710px;
   height: 339px;
 }
-
-#cancel {
-  position: absolute;
-  font-size: 30px;
-  font-weight: bold;
-  top: 78px;
-  right: 5px;
-  background-color: tomato;
-  color: rebeccapurple;
-  border-radius: 30px;
-  width: 50px;
-  height: 46px;
-  text-align: center;
+#modal-top {
+  border: 1px solid grey;
+  color: gray;
+}
+#modal-top:hover {
+  background-color: grey;
+  color: white;
 }
 #contain {
   float: left;

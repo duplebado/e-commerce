@@ -25,10 +25,6 @@ export default {
       return this.$store.state.currentHeader;
     },
     carFeaturesForTheCurrentPage() {
-      console.log(
-        "njkj dKMDKVNJKD ",
-        this.$store.state.toBeUsedByPeculiarInfoPage
-      );
       return this.$store.state.toBeUsedByPeculiarInfoPage;
     },
   },
